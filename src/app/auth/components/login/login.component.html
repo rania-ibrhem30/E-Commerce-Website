@@ -1,0 +1,89 @@
+<section class="py-5 login">
+  <div class="container">
+    <div class="row justify-content-center align-items-center d-flex">
+      <div class="col-md-5">
+        <div class="box">
+          <form #heroForm="ngForm" (submit)="loginuser(heroForm)">
+            <label for="email"> Emailhhhh :</label>
+
+            <div class="py-1">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                #email="ngModel"
+                required
+                [(ngModel)]="formData2.email"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': email.touched && email.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': email.untouched || email.valid
+              }"
+            >
+              <small *ngIf="email.errors?.['required']">
+                Email is Require</small
+              >
+              <small *ngIf="email.errors?.['pattern']">
+                Email is unvalid
+              </small>
+            </div>
+            <label for="Password">Password:</label>
+            <div class="py-1">
+              <input
+                type="text"
+                class="form-control"
+                #password="ngModel"
+                name="password"
+                id="password"
+                required
+                [(ngModel)]="formData2.password"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': password.touched && password.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': password.untouched || password.valid
+              }"
+            >
+              <small *ngIf="password.errors?.['required']">
+                Password is Require</small
+              >
+            </div>
+
+            <div class="justify-content-center align-items-center d-flex py-4">
+              <button class="btn">Login Now</button>
+            </div>
+          </form>
+          <p class="text-center" routerLink="/forget">forget password ?</p>
+          <div routerLink="/register">
+            <p class="text-center">Don't have an account yet?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <img
+          src="../../../../assets/login/Login-pana.png"
+          alt="login"
+          class="w-100"
+        />
+      </div>
+    </div>
+  </div>
+</section>

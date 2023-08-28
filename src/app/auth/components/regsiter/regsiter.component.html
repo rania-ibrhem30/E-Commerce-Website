@@ -1,0 +1,175 @@
+<section class="py-5 register">
+  <div class="container">
+    <div class="row justify-content-center align-items-center d-flex py-3">
+      <div class="col-md-5">
+        <div class="box">
+          <form #heroForm="ngForm" (submit)="register(heroForm)">
+            <label for="FullName">FullName:</label>
+            <div class="py-1">
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                #name="ngModel"
+                id="name"
+                required
+                [(ngModel)]="formData.name"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': name.touched && name.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': name.untouched || name.valid
+              }"
+            >
+              <small *ngIf="name.errors?.['required']">
+                FullName is Require</small
+              >
+            </div>
+
+            <label for="email">Email:</label>
+            <div class="py-1">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                #email="ngModel"
+                required
+                [(ngModel)]="formData.email"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': email.untouched || email.valid
+              }"
+            >
+              <small *ngIf="email.errors?.['required']">
+                Email is Require</small
+              >
+              <small *ngIf="email.errors?.['pattern']">
+                Email is unvalid
+              </small>
+            </div>
+
+            <label for="Password">Password:</label>
+            <div class="py-1">
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                #password="ngModel"
+                id="password"
+                autocomplete
+                required
+                [(ngModel)]="formData.password"
+                [ngClass]="{
+                  'form-control': true,
+                  'is.invalid': password.touched && password.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': password.untouched || password.valid
+              }"
+            >
+              <small *ngIf="password.errors?.['required']"
+                >Password is Required</small
+              >
+              <small *ngIf="password.errors?.['pattern']"
+                >Password is invalid must be characters 6
+              </small>
+            </div>
+
+            <label for="Confirm">Confirm Password:</label>
+            <div class="py-1">
+              <input
+                type="password"
+                class="form-control"
+                name="rePassword"
+                #rePassword="ngModel"
+                id="rePassword"
+                required
+                [(ngModel)]="formData.rePassword"
+                [ngClass]="{
+                  'form-control': true,
+                  'is.invalid': rePassword.touched && rePassword.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': rePassword.untouched || rePassword.valid
+              }"
+            >
+              <small *ngIf="password.errors?.['required']"
+                >Confirm Password is Require</small
+              >
+            </div>
+
+            <label for="phone">Phone:</label>
+            <div class="py-1">
+              <input
+                type="tel"
+                class="form-control"
+                name="phone"
+                #phone="ngModel"
+                id="phone"
+                required
+                [(ngModel)]="formData.phone"
+                [ngClass]="{
+                  'form-control': true,
+                  'is.invalid': phone.touched && phone.invalid
+                }"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                alert: true,
+                'alert-danger': true,
+                'text-center': true,
+                'w-100': true,
+                'd-none': phone.untouched || phone.valid
+              }"
+            >
+              <small *ngIf="phone.errors?.['required']"
+                >phone is Required</small
+              >
+            </div>
+
+            <div class="justify-content-center align-items-center d-flex py-4">
+              <button type="submit" class="btn">Register Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <img
+          src="../../../../assets/login/Mobile login-pana.png"
+          alt="login"
+          class="w-100"
+        />
+      </div>
+    </div>
+  </div>
+</section>
