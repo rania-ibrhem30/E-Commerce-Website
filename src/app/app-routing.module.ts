@@ -7,6 +7,7 @@ import { ForgetpasswordComponent } from './auth/components/forgetpassword/forget
 import { VerifyComponent } from './auth/components/verify/verify.component';
 import { RestnewpasswordComponent } from './auth/components/restnewpassword/restnewpassword.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
+import { ProductDetailsComponent } from './cart/product-details/product-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'Verify', component: VerifyComponent },
   { path: 'restpassword', component: RestnewpasswordComponent },
   { path: 'reset', component: ResetPasswordComponent },
+  { path: 'Details/:id', component:ProductDetailsComponent },
+
 ];
 
 @NgModule({

@@ -10,4 +10,7 @@ export class ProductsService {
   getallProducts() {
     return this._http.get(`${environment.apiurl}api/v1/products`);
   }
+  GetspecificProduct(id:any){
+  return this._http.get(`${environment.apiurl}products/`+id);
+  }
 }

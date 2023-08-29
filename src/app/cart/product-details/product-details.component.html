@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="row justify-content-center align-items-center d-flex">
+    <div class="col-md-6">
+        <img src="{{data.data.imageCover}}" alt="" class="w-100">
+    </div>
+    <div class="col-md-6">
+        <h2>Title:{{data.data.title}}</h2>
+        <h2 *ngIf="data">Price:{{data.data.price}}$</h2>
+        <h2> Description:{{data.data.description}}</h2>
+        <h2>Rate:{{data.data.ratingsAverage}}</h2>
+    </div>
+
+  </div>
+  <div *ngFor="let item of data.data.images">
+    <img src="{{item}}" alt="">
+  </div>
+</div>
