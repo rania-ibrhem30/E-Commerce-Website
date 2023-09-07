@@ -8,6 +8,9 @@ import { VerifyComponent } from './auth/components/verify/verify.component';
 import { RestnewpasswordComponent } from './auth/components/restnewpassword/restnewpassword.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { ProductDetailsComponent } from './cart/product-details/product-details.component';
+import { CartComponent } from './cart/cart/cart.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
+import { SubcategComponent } from './shared/component/subcateg/subcateg.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,7 +22,10 @@ const routes: Routes = [
   { path: 'restpassword', component: RestnewpasswordComponent },
   { path: 'reset', component: ResetPasswordComponent },
   { path: 'Details/:id', component:ProductDetailsComponent },
-
+  { path: 'reset', component: ResetPasswordComponent },
+  { path: 'cart', component:CartComponent  },
+   {path:'checkout',component:CheckoutComponent},
+   {path:'subgate/:id',component:SubcategComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,85 @@
+<section class="payment py-2">
+  <div class="container">
+    <div class="row justify-content-center align-items-center d-flex">
+      <span class="text-center py-3">CheckOut</span>
+      <div class="col-md-4">
+        <img
+          src="../../../assets/cart/Payment Information-bro.png"
+          alt=""
+          class="w-100"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="box">
+          <form #heroForm="ngForm" (submit)="shippingAddress(heroForm)">
+            <div class="py-1">
+          <label for="FullName"> Full Name :</label>
+             <input type="text" 
+             class="form-control"
+             id="Full Name"
+             name="Full Name"
+             #FullName="ngModel"
+             required
+             [(ngModel)]="formData.FullName"
+             [ngClass]="{
+               'form-control': true,
+               'is-invalid': FullName.touched && FullName.invalid
+             }">
+
+            </div>
+            <div class="py-1">
+              <label for="email"> Address Details :</label>
+               
+              <input
+                type="text"
+                class="form-control"
+                id="Details"
+                name="Details"
+                #Details="ngModel"
+                required
+                [(ngModel)]="formData.Details"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': Details.touched && Details.invalid
+                }"
+              />
+            </div>
+            <div class="py-1">
+              <label for="phone"> Phone Namber :</label>
+              <input
+                type="tel"
+                class="form-control"
+                name="phone"
+                #phone="ngModel"
+                required
+                [(ngModel)]="formData.phone"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': phone.touched && phone.invalid
+                }"
+              />
+            </div>
+            <div class="py-1">
+              <label for="phone"> Your City:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="City"
+                #City="ngModel"
+                required
+                [(ngModel)]="formData.City"
+                [ngClass]="{
+                  'form-control': true,
+                  'is-invalid': City.touched && City.invalid
+                }"
+              />
+            </div>
+            <div class="text-center py-1">
+              <button class="btn btn-dark">Pay</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

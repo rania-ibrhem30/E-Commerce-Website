@@ -5,9 +5,10 @@ import { FooterComponent } from './component/footer/footer.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { SubcategComponent } from './component/subcateg/subcateg.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NavbarComponent],
+  declarations: [HomeComponent, FooterComponent, NavbarComponent, SubcategComponent],
   imports: [CommonModule, RouterModule, HttpClientModule],
   exports: [HomeComponent, FooterComponent, NavbarComponent],
 })

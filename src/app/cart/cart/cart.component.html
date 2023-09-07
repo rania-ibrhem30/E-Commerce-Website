@@ -1,0 +1,114 @@
+<section class="py-5">
+ <div class="container">
+  <h1 class="text-start" *ngIf=" cartproducts.length > 0">You have <span>{{cartproducts.length}}</span> Item in your Cart</h1>
+    <div class="d-flex">
+        <div class=" w-50 ">
+            <div class="d-flex justify-content-center align-items-center gap-5 my-2 bg  py-3 rounded" *ngFor="let item of cartproducts ; let index = index ">
+                <img src="{{item.imageCover}}" alt="jjjj" class="w-25">
+                <div>
+                    <p>{{item.title}}</p>
+                    <p>{{item.price}}$</p>
+                    <small class="text-mute">Rate:{{item.ratingsAverage}}</small> <br>
+                    <div class="d-flex">
+                        <i class='bx bx-check fs-3' style='color:#4cae11'  ></i>
+                        <small class="text-mute">Click & Collect</small>
+                    </div>
+                    <div class="d-flex">
+                        <i class='bx bx-check fs-3' style='color:#4cae11'  ></i>
+                        <small class="text-mute">Home Delivery</small>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-center align-items-center d-flex mx-2">
+                        <div class="col">
+                          <p>Quantity:{{item.quantity}}</p>
+                        
+                        </div>
+                        <div class="rounded border d-flex col justify-content-center align-items-center py-1">
+                            <div class="">
+                              <i class='bx bx-plus fs-3' style='color:#0f0f10' (click)="puls(index)" ></i>
+                            </div>
+                            <div><p>{{item.quantity}}</p></div>
+                            <div>
+                              <i class='bx bx-minus fs-3'  (click)="mins(index)"></i>
+                            </div>
+                          </div>
+                          <div class="col">
+                           <p>Price:{{item.quantity * item.price}}$</p>
+                          </div>
+                          <div class="col justify-content-center align-items-center">
+                            <i class='bx bxs-trash fs-3 ms-5' style='color:#40dc41' (click)="deleteItem(index)"></i>
+                          </div>
+                          
+                         
+                        
+                    </div>
+               
+            
+                </div>
+             
+                </div>
+              
+
+        </div>
+        <div class="card2 card" *ngIf=" cartproducts.length > 0">
+            <div class=" justify-content-center align-items-center py-3 mx-5">
+             <div class="d-flex mx-3 gap-3 justify-content-center align-items-center">
+              <div class="">
+                <input type="checkbox" name="Home Delivery" id="" checked>
+               Home Delivery
+              </div>
+              <div class="">
+                <input type="checkbox" name="Home Delivery">
+                Click & Collect
+              </div>
+             </div>
+             <hr>
+            
+             <div class=" d-flex justify-content-between gap-5">
+                <div>
+                  <p>Subtotal:</p>
+                </div>
+               <div>
+                  <p>350$</p>
+               </div>
+             </div>
+            
+             <div class=" d-flex justify-content-between gap-5">
+                <div>
+                  <p>Delivery</p>
+                </div>
+               <div>
+                  <p>0.00$</p>
+               </div>
+             </div>
+             <hr>
+             <div class=" d-flex justify-content-between gap-5" >
+                <div>
+                  <h3>Total:</h3>
+                </div>
+               <div>
+                  <p>{{total}} $</p>
+               </div>
+             </div>
+             <hr>
+             
+            
+
+            </div>
+            <div class="justify-content-center align-items-center d-flex mb-3">
+                <button class="btn btn-dark w-75"  (click)="getResponseFromService()">Checkout</button>
+
+             </div>
+        </div> 
+        
+   
+    </div>
+    <div *ngIf="cartproducts.length === 0">
+      <h1 class="text-center"> Your Cart is <span>Empty.</span></h1>
+      <div class="justify-content-center align-items-center d-flex">
+        <img src="../../../assets/cart/emptycart.jpg" alt="" class="w-25 ">
+      </div>
+    </div>
+   
+</div>
+</section>

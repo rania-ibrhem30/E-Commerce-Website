@@ -1,0 +1,37 @@
+section{
+    // background-color:rgb(226, 226, 226);
+    .card{
+        background-color:white;
+        border: 2px dotted black;
+
+    }
+    .bg{
+        border: 2px dotted black;
+    }
+    .hr{
+        color: black !important;
+    }
+    .boxicons{
+        position: relative;
+    }
+    .icon{
+    position: absolute;
+    bottom: 242px;
+    left: 327px;
+    }
+    .card2{
+        position: absolute;
+        right: 155px;
+        top: 125px;   
+        width: 363px;
+    }
+    i{
+        cursor: pointer;
+    }
+     
+}
+span{
+    font-size: 70px ;
+    font-weight: 900;
+    color: black;
+}
