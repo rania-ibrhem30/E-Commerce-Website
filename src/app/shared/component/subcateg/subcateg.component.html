@@ -1,7 +1,7 @@
 
 <section class="py-2">
   <div class="container">
-    <div class="row justify-content-center align-items-center d-flex gap-3">
+     <div class="row justify-content-center align-items-center d-flex gap-3">
         <div class="col-md-3 " *ngFor="let item of getSubCategories">
             <div class="box rounded-circle justify-content-center align-items-center d-flex">
                 <img src="{{item.image}}" alt="">
@@ -9,19 +9,22 @@
           </div>
            
         </div>
-        <div *ngIf="getSubCategories.length === 0" class="py-5">
-          <div class="">
+        <div *ngIf="getSubCategories.length === 0 && !empty" class="py-5">
+            <div class="justify-content-center align-items-center d-flex">
+                <h1>spinner</h1>
+            </div>
+         </div> 
+        <div *ngIf="empty" class="py-5">
             <div class="justify-content-center align-items-center d-flex">
                 <img src="../../../../assets/home-img/Barcode-bro.png" alt="" class="w-25">
 
             </div>
-            <div class="justify-content-center align-items-center d-flex">
-                <h1>Coming<span>Soon</span> New Products</h1>
+        <div class="justify-content-center align-items-center d-flex">
+            <h1>coming <span>Soon</span>New Product</h1>
 
-            </div>
-          </div>
-         </div>
-    </div>
-   
+        </div>
+        </div> 
+    </div>    
+
   </div>
 </section>

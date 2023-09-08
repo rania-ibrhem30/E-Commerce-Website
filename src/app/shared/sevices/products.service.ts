@@ -19,6 +19,9 @@ export class ProductsService {
   }
   
   getSubCategories(categoryId:string):Observable<any> {
-    return this._http.get(`${environment.apiurl}api/v1/categories/${categoryId}/subcategories`)
+    return this._http.get(`${environment.apiurl}api/v1/categories/${categoryId}/subcategories`,{observe:'response'})
+  }
+  getbrands():Observable<any>{
+    return this._http.get(`${environment.apiurl}api/v1/brands`)
   }
 }

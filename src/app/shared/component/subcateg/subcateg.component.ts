@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SubcategComponent implements OnInit,DoCheck {
   getSubCategories: any []=[];
   id:any
-  empty:boolean= false
+  empty:boolean=false
+
   constructor( private __products:ProductsService , private route:ActivatedRoute){
     this.id=route.snapshot.paramMap.get("id")
 
@@ -18,11 +19,16 @@ export class SubcategComponent implements OnInit,DoCheck {
   }
   gateById(id:any){
     this.__products.getSubCategories(id).subscribe((res:any)=>{
-      console.log(res)
-      this.getSubCategories=res.data
+      console.log("❤️❤️❤️",res.body.data)
+      if(res.body.data.length !== 0){
+        this.empty = false
+      }else{
+        this.empty = true
+        console.log(res.body.data.length )
+        console.log(this.empty)
+      }
+      this.getSubCategories=res.body.data
       console.log(this.getSubCategories)
-      
-   
   });
 
     

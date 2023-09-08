@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   cartproducts:any []=[];
   Categories:any[]=[];
   getSubCategories:any[]=[]
+  brands:any[]=[]
   addbutton:Boolean =false
   amount=0
   constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ) {}
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.get();
     this.getGate();
+    this.getimgbrands();
     
   }
   addToCart(item:any ,quantity: string){
@@ -77,6 +79,11 @@ export class HomeComponent implements OnInit {
     this._products.getCategories().subscribe((res:any)=>{
     this.Categories =res.data 
 
+    })
+  }
+  getimgbrands(){
+    this._products.getbrands().subscribe((res:any)=>{
+      this.brands=res.data
     })
   }
 
