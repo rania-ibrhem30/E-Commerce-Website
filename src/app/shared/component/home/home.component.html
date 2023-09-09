@@ -27,7 +27,7 @@
 </section>
 <section class="cate py-5">
   <div class="container">
-    <h1 class="text-center  py-3">Shop By Category </h1>
+    <h1 class="text-center  py-3">Shop<span> By </span> Category</h1>
     <div class="row justify-content-center align-items-center d-flex">
       <div class="col-md-2 gap-5" *ngFor="let item of Categories">
         <img src="{{item.image}}" alt="" class="rounded-circle" style="height: 200px; width: 200px;" routerLink="/subgate/{{item._id}}">
@@ -36,24 +36,26 @@
     </div>
   </div>
 </section>
-<!-- <section class="">
-  <div class="container d-flex gap-3">
-    <marquee behavior="alternate" direction="left" scrollamount="6" loop="infinite"  height="10%">
-      <ng-container *ngFor="let item of brands">
-        <img src="{{item.image}}" alt="" class="w-25" style="height: 100px; width: 120px;">
-      </ng-container>
-    </marquee>
+ <section class="wall">
+  <h1 class="text-center">Our <span>Brands</span></h1>
+  <div class="container">
+    <div class="Marquees">
+      <div class="Marquee FirstRow">
+        <div class="marquee Item" *ngFor="let item of brands">
+          <img src="{{item.image}}" alt="" class="" style="height: 100px; width: 120px;">
+       </div>
+      
+      </div>
+      <div class="Marquee SecondRow">
+        <div class="marquee Item" *ngFor="let item of brands">
+          <img src="{{item.image}}" alt="" class="" style="height: 100px; width: 120px;">
+         </div>
+        
+      </div>
+    </div>
     
   </div>
-  <div class="container d-flex gap-3">
-    <marquee behavior="alternate" direction="right" scrollamount="6" loop="infinite" height="10%">
-      <ng-container *ngFor="let item of brands">
-        <img src="{{item.image}}" alt="" style="height: 100px; width: 120px;">
-      </ng-container>
-    </marquee>
-    
-  </div>
-</section> -->
+</section> 
 <section class="py-5 cart">
   <div class="container">
     <div class="row justify-content-center align-items-center gap-1">

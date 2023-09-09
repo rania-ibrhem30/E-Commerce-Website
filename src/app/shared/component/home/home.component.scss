@@ -1,1 +1,45 @@
 $carousel-interval: 1000;
+
+.Marquees {
+    overflow-x: hidden;
+}
+
+.Marquee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400vw;
+    height: 15vh;
+}
+
+.marquee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12vh;
+    width: 12.5vw;
+    overflow: hidden;
+}
+
+
+
+.FirstRow {
+    animation: Scroll 60s linear infinite;
+}
+
+.SecondRow {
+    animation: Scroll 60s linear infinite;
+    animation-direction: reverse;
+}
+
+@keyframes Scroll {
+    0% {
+        transform: translateX(-50vw);
+        -webkit-transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(50vw);
+        -webkit-transform: translateX(50vw);
+    }
+}
