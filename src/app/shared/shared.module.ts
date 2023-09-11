@@ -3,13 +3,20 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './component/home/home.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SubcategComponent } from './component/subcateg/subcateg.component';
 
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'subgate/:id', component: SubcategComponent },
+
+]
+
 @NgModule({
   declarations: [HomeComponent, FooterComponent, NavbarComponent, SubcategComponent],
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, RouterModule.forChild(routes), HttpClientModule],
   exports: [HomeComponent, FooterComponent, NavbarComponent],
 })
 export class SharedModule {}
