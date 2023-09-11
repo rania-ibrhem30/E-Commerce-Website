@@ -7,6 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SubcategComponent } from './component/subcateg/subcateg.component';
 
+
+console.warn("shared loaded");
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },

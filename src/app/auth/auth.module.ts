@@ -26,6 +26,7 @@ const routes: Routes = [
 
 ]
 
+console.warn("auth loaded");
 
 @NgModule({
   declarations: [
@@ -43,13 +44,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
   ],
-  exports: [
-    LoginComponent,
-    RegsiterComponent,
-    ForgetpasswordComponent,
-    VerifyComponent,
-    ProfileComponent
-  ],
+
   providers: [CookieService],
 })
 export class AuthModule {}

@@ -16,6 +16,7 @@ const routes: Routes = [
 
 ]
 
+console.warn("cart loaded");
 
 @NgModule({
   declarations: [
@@ -29,11 +30,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  exports:[
-    ProductDetailsComponent,
-    ToastModule,
-    CheckoutComponent,
-  ],
+
   providers:[MessageService]
 })
 export class CartModule { }

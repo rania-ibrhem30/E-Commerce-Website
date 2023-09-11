@@ -29,7 +29,7 @@ $carousel-interval: 1000;
 
 .SecondRow {
     animation: Scroll 60s linear infinite;
-    animation-direction: reverse;
+    animation-direction:normal;
 }
 
 @keyframes Scroll {
