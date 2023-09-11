@@ -1,28 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../sevices/products.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,DoCheck {
   data: any[] = [];
   cartproducts:any []=[];
   Categories:any[]=[];
   getSubCategories:any[]=[]
   brands:any[]=[]
   addbutton:Boolean =false
-  amount=0
+  amount=0;
+  Subscriptions:Subscription[] = []
   constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ) {}
+  ngDoCheck(): void {
+    console.log(this.Subscriptions)
+  }
   get() {
-    this._products.getallProducts().subscribe((res: any) => {
+      let subgetall= this._products.getallProducts().subscribe((res: any) => {
       console.log(res);
       this.data = res.data;
       console.log(this.data);
     });
+    this.Subscriptions.push(subgetall)
   }
  
   ngOnInit() {
@@ -76,15 +81,25 @@ export class HomeComponent implements OnInit {
     }
   }
   getGate(){
-    this._products.getCategories().subscribe((res:any)=>{
+     let subdateg = this._products.getCategories().subscribe((res:any)=>{
     this.Categories =res.data 
 
     })
+    this.Subscriptions.push(subdateg)
   }
   getimgbrands(){
-    this._products.getbrands().subscribe((res:any)=>{
-      this.brands=res.data
+      let getbrands= this._products.getbrands().subscribe((res:any)=>{
+       this.brands=res.data
     })
+    this.Subscriptions.push(getbrands)
+
+  }
+
+  ngOnDestroy() {
+    for(let Subscription of this.Subscriptions){
+      Subscription.unsubscribe()
+    }
   }
 
 }
+

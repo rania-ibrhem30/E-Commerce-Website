@@ -6,8 +6,15 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  {path:'',component:CartComponent},
+  {path:'cart',component:CartComponent},
+  {path:'checkout',component:CheckoutComponent},
+  { path: 'Details/:id', component:ProductDetailsComponent },
 
+]
 
 
 @NgModule({
@@ -19,12 +26,13 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ToastModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild(routes)
   ],
   exports:[
     ProductDetailsComponent,
     ToastModule,
-    CheckoutComponent
+    CheckoutComponent,
   ],
   providers:[MessageService]
 })
