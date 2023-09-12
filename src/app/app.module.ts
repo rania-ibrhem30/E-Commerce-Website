@@ -6,10 +6,11 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, AuthModule,CartModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, AuthModule,CartModule ,ToastModule],
   providers: [MessageService],
 
   bootstrap: [AppComponent],

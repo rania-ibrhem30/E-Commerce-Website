@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit,DoCheck {
   brands:any[]=[]
   addbutton:Boolean =false
   amount=0;
+  cartItemCount: number = 0; // Initialize the count to 0
+  quantityInput:any
   Subscriptions:Subscription[] = []
   constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ) {}
   ngDoCheck(): void {
@@ -36,33 +38,99 @@ export class HomeComponent implements OnInit,DoCheck {
     this.getimgbrands();
     
   }
-  addToCart(item:any ,quantity: string){
-    console.log()
-    const amount = 0; // Set the desired amount here
+  // addToCart(item:any ,quantity: string){
+  //   console.log()
+  //   const amount = 0; // Set the desired amount here
+  //   item.amount = amount;
+  //   item.quantity = +quantity;
+  //       if("cart" in localStorage){
+  //     this.cartproducts =JSON.parse(localStorage.getItem("cart")!)
+  //     let exist =this.cartproducts.find(item =>item.id == item.id)
+  //     if(exist){
+  //       this.showError();
+  //       alert('no')
+  //     }
+      
+  //     this.showSuccess();
+  //     this.addbutton=false
 
+  //     this.cartproducts.push(item)
+  //     localStorage.setItem("cart",JSON.stringify(this.cartproducts))
+
+  //   }
+  //   else{
+  //     this.cartproducts.push(item)
+  //     localStorage.setItem("cart",JSON.stringify(this.cartproducts))
+  //     this.showSuccess();
+
+  //   }
+  // }
+  // addToCart(item: any, quantity: string) {
+  //   const amount = 0; // Set the desired amount here
+  //   item.amount = amount;
+  //   item.quantity = +quantity;
+  
+  //   if ("cart" in localStorage) {
+  //     this.cartproducts = JSON.parse(localStorage.getItem("cart")!);
+  //     const exist = this.cartproducts.find((cartItem: any) => cartItem.id === item.id);
+  //     if (exist) {
+  //       this.showError();
+  //       return; 
+  //     }
+  
+  //     this.showSuccess();
+  //     this.addbutton = false;
+  
+  //     this.cartproducts.push(item);
+  //     localStorage.setItem("cart", JSON.stringify(this.cartproducts));
+  //   } else {
+  //     this.cartproducts.push(item);
+  //     localStorage.setItem("cart", JSON.stringify(this.cartproducts));
+  //     this.showSuccess();
+  //   }
+  // }
+  addToCart(item: any, quantity: string) {
+    const amount = 0; // Set the desired amount here
     item.amount = amount;
     item.quantity = +quantity;
-        if("cart" in localStorage){
-      this.cartproducts =JSON.parse(localStorage.getItem("cart")!)
-      this.showSuccess();
-
-      this.cartproducts.push(item)
-      localStorage.setItem("cart",JSON.stringify(this.cartproducts))
-
+  
+    if (!quantity || +quantity == 0) {
+      return; 
     }
-    else{
-      this.cartproducts.push(item)
-      localStorage.setItem("cart",JSON.stringify(this.cartproducts))
+  
+    if ("cart" in localStorage) {
+      this.cartproducts = JSON.parse(localStorage.getItem("cart")!);
+      const exist = this.cartproducts.find((cartItem: any) => cartItem.id === item.id);
+      if (exist) {
+        alert("Product is already in your cart")
+        this.showError();
+        return; 
+      }
+  
       this.showSuccess();
-
+      this.addbutton = false;
+  
+      this.cartproducts.push(item);
+      localStorage.setItem("cart", JSON.stringify(this.cartproducts));
+  
+      // Send the request here using the updated cart data
+      // ...
+    } else {
+      this.cartproducts.push(item);
+      localStorage.setItem("cart", JSON.stringify(this.cartproducts));
+      this.showSuccess();
+  
+      
     }
   }
+  
+  
  
   showSuccess() {
     this._messageService.add({
-      severity: 'success',
+      severity: 'Success',
       summary: 'Success',
-      detail: 'the product is added in cart ',
+      detail: 'Your product is added in cart ',
     });
   }
 
@@ -70,7 +138,7 @@ export class HomeComponent implements OnInit,DoCheck {
     this._messageService.add({
       severity: 'error',
       summary: 'Error',
-      detail: ``,
+      detail: `Product is already in your cart`,
     });
   }
   checkQuantity(quantityInput: HTMLInputElement) {
@@ -94,6 +162,8 @@ export class HomeComponent implements OnInit,DoCheck {
     this.Subscriptions.push(getbrands)
 
   }
+
+ 
 
   ngOnDestroy() {
     for(let Subscription of this.Subscriptions){

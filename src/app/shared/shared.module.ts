@@ -6,6 +6,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SubcategComponent } from './component/subcateg/subcateg.component';
+import { ToastModule } from 'primeng/toast';
 
 
 console.warn("shared loaded");
@@ -19,7 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [HomeComponent, FooterComponent, NavbarComponent, SubcategComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), HttpClientModule],
+  imports: [CommonModule, RouterModule.forChild(routes), HttpClientModule,ToastModule],
   exports: [HomeComponent, FooterComponent, NavbarComponent],
 })
 export class SharedModule {}
