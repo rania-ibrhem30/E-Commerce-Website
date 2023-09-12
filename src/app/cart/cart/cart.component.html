@@ -96,7 +96,8 @@
 
             </div>
             <div class="justify-content-center align-items-center d-flex mb-3">
-                <button class="btn btn-dark w-75"  (click)="getResponseFromService()">Checkout</button>
+                <button type="button" class="btn btn-dark w-75" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Checkout                </button>
 
              </div>
         </div> 
@@ -110,5 +111,28 @@
       </div>
     </div>
    
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><h1>Checkout System</h1></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center justify-content-center gap-3">
+          <h2>Your Order is Done </h2>
+         <i class='bx bxs-check-circle fs-1' style='color:#17d31f'  ></i>
+        </div>
+        <div class="justify-content-center align-items-center d-flex py-5">
+            <h2> Total Price Your Order: {{total}} $</h2>
+        </div>
+      </div>
+     
+    </div>
+  </div>
 </div>
 </section>

@@ -24,4 +24,6 @@ export class ProductsService {
   getbrands():Observable<any>{
     return this._http.get(`${environment.apiurl}api/v1/brands`)
   }
+
+ 
 }

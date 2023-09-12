@@ -61,11 +61,13 @@
             <h1>{{ item.price }}$</h1>
             <i class='bx bxs-cart fs-1' style='color:#49c200'  (click)="addbutton = true" *ngIf="!addbutton" ></i>
           </div> 
-          <div class="d-flex w-50 px-5" *ngIf="addbutton">
-            <input type="number" #quantityInput placeholder="Quantity" (input)="checkQuantity(quantityInput)">
-            <button class="btn btn-danger" (click)="addToCart(item, quantityInput.value)">add</button>
 
-          </div>
+         <div class="d-flex w-50 px-5" *ngIf="addbutton">
+            <input type="number" #quantityInput placeholder="Quantity" (input)="checkQuantity(quantityInput)">
+             <button class="btn btn-danger" (click)="addToCart(item, quantityInput.value)">add</button> 
+
+
+          </div> 
           <p class="py-2 text-center">{{ item.title }}</p>
         </div>
       </div>
