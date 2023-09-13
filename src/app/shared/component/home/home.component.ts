@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../sevices/products.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 @Component({
@@ -10,87 +10,51 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit,DoCheck {
   data: any[] = [];
+  men:any[]=[];
   cartproducts:any []=[];
   Categories:any[]=[];
   getSubCategories:any[]=[]
   brands:any[]=[]
   addbutton:Boolean =false
   amount=0;
+  rania:[]=[];
+  Electronics:any[]=[];
+  Women:any[]=[];
   cartItemCount: number = 0; // Initialize the count to 0
   quantityInput:any
   Subscriptions:Subscription[] = []
-  constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ) {}
+  id: string | null;
+  constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ,private route:ActivatedRoute ) {
+    this.id=route.snapshot.paramMap.get("id")
+
+  }
   ngDoCheck(): void {
     console.log(this.Subscriptions)
   }
   get() {
       let subgetall= this._products.getallProducts().subscribe((res: any) => {
-      console.log(res);
-      this.data = res.data;
-      console.log(this.data);
+      console.log(res.data);
+      const data  = res.data
+      console.log(data);
+        this.Women= data.filter((product:  any)=> product.category.name ==="Women's Fashion")
+        console.log(this.Women)
+        this.men= data.filter((product:  any)=> product.category.name ==="Men's Fashion")
+        console.log(this.men)
+        this.Electronics= data.filter((product:  any)=> product.category.name ==="Electronics")
+        console.log(this.Electronics)
     });
     this.Subscriptions.push(subgetall)
   }
+
  
   ngOnInit() {
     this.get();
     this.getGate();
     this.getimgbrands();
-    
+
   }
-  // addToCart(item:any ,quantity: string){
-  //   console.log()
-  //   const amount = 0; // Set the desired amount here
-  //   item.amount = amount;
-  //   item.quantity = +quantity;
-  //       if("cart" in localStorage){
-  //     this.cartproducts =JSON.parse(localStorage.getItem("cart")!)
-  //     let exist =this.cartproducts.find(item =>item.id == item.id)
-  //     if(exist){
-  //       this.showError();
-  //       alert('no')
-  //     }
-      
-  //     this.showSuccess();
-  //     this.addbutton=false
-
-  //     this.cartproducts.push(item)
-  //     localStorage.setItem("cart",JSON.stringify(this.cartproducts))
-
-  //   }
-  //   else{
-  //     this.cartproducts.push(item)
-  //     localStorage.setItem("cart",JSON.stringify(this.cartproducts))
-  //     this.showSuccess();
-
-  //   }
-  // }
-  // addToCart(item: any, quantity: string) {
-  //   const amount = 0; // Set the desired amount here
-  //   item.amount = amount;
-  //   item.quantity = +quantity;
-  
-  //   if ("cart" in localStorage) {
-  //     this.cartproducts = JSON.parse(localStorage.getItem("cart")!);
-  //     const exist = this.cartproducts.find((cartItem: any) => cartItem.id === item.id);
-  //     if (exist) {
-  //       this.showError();
-  //       return; 
-  //     }
-  
-  //     this.showSuccess();
-  //     this.addbutton = false;
-  
-  //     this.cartproducts.push(item);
-  //     localStorage.setItem("cart", JSON.stringify(this.cartproducts));
-  //   } else {
-  //     this.cartproducts.push(item);
-  //     localStorage.setItem("cart", JSON.stringify(this.cartproducts));
-  //     this.showSuccess();
-  //   }
-  // }
   addToCart(item: any, quantity: string) {
-    const amount = 0; // Set the desired amount here
+    const amount = 0; 
     item.amount = amount;
     item.quantity = +quantity;
   
@@ -164,6 +128,11 @@ export class HomeComponent implements OnInit,DoCheck {
   }
 
  
+
+
+
+
+
 
   ngOnDestroy() {
     for(let Subscription of this.Subscriptions){
