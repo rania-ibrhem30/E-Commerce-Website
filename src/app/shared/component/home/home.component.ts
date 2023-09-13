@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit,DoCheck {
   quantityInput:any
   Subscriptions:Subscription[] = []
   id: string | null;
+  favoriteProducts: any[] = [];
+
   constructor(private _products: ProductsService, private router: Router , private _messageService:MessageService ,private route:ActivatedRoute ) {
     this.id=route.snapshot.paramMap.get("id")
 
@@ -76,9 +78,6 @@ export class HomeComponent implements OnInit,DoCheck {
   
       this.cartproducts.push(item);
       localStorage.setItem("cart", JSON.stringify(this.cartproducts));
-  
-      // Send the request here using the updated cart data
-      // ...
     } else {
       this.cartproducts.push(item);
       localStorage.setItem("cart", JSON.stringify(this.cartproducts));
@@ -88,6 +87,29 @@ export class HomeComponent implements OnInit,DoCheck {
     }
   }
   
+  addfavoriteProducts(item:any){
+    if ("favoriteProducts" in localStorage) {
+      this.favoriteProducts = JSON.parse(localStorage.getItem("favoriteProducts")!);
+      const existfav = this.favoriteProducts.find((cartItem: any) => cartItem.id === item.id);
+      if (existfav) {
+        alert("Product is already in your fave")
+        return; 
+      }
+      this.favoriteProducts.push(item);
+      localStorage.setItem("favoriteProducts", JSON.stringify(this.favoriteProducts));
+    } else {
+      this.cartproducts.push(item);
+      localStorage.setItem("favoriteProducts", JSON.stringify(this.favoriteProducts));
+  
+      
+    }
+
+  }
+
+
+
+
+
   
  
   showSuccess() {
@@ -126,13 +148,6 @@ export class HomeComponent implements OnInit,DoCheck {
     this.Subscriptions.push(getbrands)
 
   }
-
- 
-
-
-
-
-
 
   ngOnDestroy() {
     for(let Subscription of this.Subscriptions){

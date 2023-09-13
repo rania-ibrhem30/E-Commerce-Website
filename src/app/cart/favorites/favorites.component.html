@@ -1,0 +1,22 @@
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <span class="text-center"> Your favorite Products 💖</span>
+            <div class="col-md-2" *ngFor="let item of favoriteProducts" >
+                <div class="bg-info justify-content-center align-items-center d-flex bg-danger flex-column">
+                    <div> 
+                        <img [src]="item.imageCover" alt="" class="w-50 mx-auto">
+                       
+                    </div>
+                    <div>
+                        <p>{{item.price}}</p>
+                        <p>{{item.title}}</p>
+                       </div>
+                 
+                </div>
+
+            </div>           
+        </div>
+   </div>
+</section>
